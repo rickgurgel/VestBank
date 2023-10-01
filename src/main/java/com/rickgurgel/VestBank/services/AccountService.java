@@ -31,28 +31,6 @@ public class AccountService {
 		return repo.insert(obj);
 	}
 	
-	public Account insertUpToTenAccounts(Account obj) {
-		
-		Scanner sc = new Scanner(System.in);
-		int n;
-		
-		do {
-			System.out.println("Wrong input! Enter a value between 5 and 10: ");
-			n = sc.nextInt();
-			sc.nextLine();
-		} while (n != (int)n);
-		
-		for(int i = 0; i < n; i++) {
-			obj.setId(null);
-			System.out.println("Enter the username:");
-			obj.setUsername(sc.nextLine());
-			obj.setBalance(0.00);
-			repo.insert(obj);
-		}
-		sc.close();
-		return obj;
-	}
-	
 	public Account fromDTO(AccountDTO objDto) {
 		return new Account(objDto.getId(), objDto.getUsername(), objDto.getBalance());
 	}

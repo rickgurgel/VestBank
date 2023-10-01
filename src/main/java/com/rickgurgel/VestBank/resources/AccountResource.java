@@ -2,6 +2,7 @@ package com.rickgurgel.VestBank.resources;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Scanner;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,11 +47,4 @@ public class AccountResource {
 		return ResponseEntity.created(uri).build();
 	}
 	
-	@PostMapping("/insertMany")
-	public ResponseEntity<Void> insertUpToTen(@RequestBody AccountDTO objDto){
-		Account obj = service.fromDTO(objDto);
-		obj = service.insertUpToTenAccounts(obj);
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
-		return ResponseEntity.created(uri).build();
-	}
 }
