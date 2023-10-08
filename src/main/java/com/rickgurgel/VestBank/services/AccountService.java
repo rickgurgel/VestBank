@@ -27,7 +27,7 @@ public class AccountService {
 		return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado!"));
 	}
 	
-	public Account insertOneAccount(Account obj) {
+	public Account insert(Account obj) {
 		return repo.insert(obj);
 	}
 	
@@ -36,6 +36,17 @@ public class AccountService {
 		repo.deleteById(id);
 	}
 	
+	public Account update(Account obj) {
+		Account newObj = findById(obj.getId());
+		updateData(newObj, obj);
+		return repo.save(newObj);
+	}
+	
+	private void updateData(Account newObj, Account obj) {
+		newObj.setUsername(obj.getUsername());
+		newObj.setBalance(obj.getBalance());
+	}
+
 	public Account fromDTO(AccountDTO objDto) {
 		return new Account(objDto.getId(), objDto.getUsername(), objDto.getBalance());
 	}
