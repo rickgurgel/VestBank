@@ -31,7 +31,13 @@ public class AccountService {
 		return repo.insert(obj);
 	}
 	
+	public void delete(String id) {
+		findById(id);
+		repo.deleteById(id);
+	}
+	
 	public Account fromDTO(AccountDTO objDto) {
 		return new Account(objDto.getId(), objDto.getUsername(), objDto.getBalance());
 	}
+	
 }
