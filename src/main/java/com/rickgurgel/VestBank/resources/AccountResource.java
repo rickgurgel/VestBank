@@ -46,7 +46,7 @@ public class AccountResource {
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
-	
+
 	@RequestMapping("/{id}")
 	public ResponseEntity<Void> delete(@PathVariable String id){
 		service.delete(id);
@@ -60,5 +60,4 @@ public class AccountResource {
 		obj = service.update(obj);
 		return ResponseEntity.noContent().build();
 	}
-	
 }

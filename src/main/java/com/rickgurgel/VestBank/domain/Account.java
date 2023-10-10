@@ -2,6 +2,7 @@ package com.rickgurgel.VestBank.domain;
 
 import java.io.Serializable;
 import java.util.Objects;
+import java.util.Scanner;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -72,6 +73,5 @@ public class Account implements Serializable{
 	public String toString() {
 		return "Account [id=" + id + ", username=" + username + ", balance=" + balance + "]";
 	}	
-	
 	
 }

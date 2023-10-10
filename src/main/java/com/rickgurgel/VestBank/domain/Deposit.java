@@ -9,25 +9,26 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
 public class Deposit implements Serializable{
-	
+
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	private String id;
 	private Date date;
 	private Double amount;
-	private Account account;
+	private Account author;
+	private Account newBalance;
 	
 	public Deposit() {
-		super();
 	}
 
-	public Deposit(String id, Date date, Double amount, Account account) {
+	public Deposit(String id, Date date, Double amount, Account author, Account newBalance) {
 		super();
 		this.id = id;
 		this.date = date;
 		this.amount = amount;
-		this.account = account;
+		this.author = author;
+		this.newBalance = newBalance;
 	}
 
 	public String getId() {
@@ -54,14 +55,22 @@ public class Deposit implements Serializable{
 		this.amount = amount;
 	}
 	
-	public Account getAccount() {
-		return account;
+	public Account getAuthor() {
+		return author;
 	}
 
-	public void setAccount(Account account) {
-		this.account = account;
+	public void setAuthor(Account author) {
+		this.author = author;
+	}
+	
+	public Account getNewBalance() {
+		return newBalance;
 	}
 
+	public void setNewBalance(Account newBalance) {
+		this.newBalance = newBalance;
+	}
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -78,6 +87,4 @@ public class Deposit implements Serializable{
 		Deposit other = (Deposit) obj;
 		return Objects.equals(id, other.id);
 	}
-	
-	
 }
