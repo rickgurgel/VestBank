@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Configuration;
 
 import com.rickgurgel.VestBank.domain.Account;
 import com.rickgurgel.VestBank.domain.Deposit;
+import com.rickgurgel.VestBank.dto.AuthorDTO;
 import com.rickgurgel.VestBank.repository.AccountRepository;
 import com.rickgurgel.VestBank.repository.DepositRepository;
 
@@ -34,10 +35,11 @@ public class Instantiation implements CommandLineRunner{
 		Account arielton = new Account(null, "Arielton Nunes", 23456.78);
 		Account guanabara = new Account(null, "Guanabara Nunes", 6666.66);
 		
-		Deposit deposit1 = new Deposit(null, sdf.parse("09/10/2023"), 2314.74, ricardo, null);
-		Deposit deposit2 = new Deposit(null, sdf.parse("09/10/2023"), 2314.74, arielton, null);
-		
 		accountRepository.saveAll(Arrays.asList(ricardo, arielton, guanabara));
+		
+		Deposit deposit1 = new Deposit(null, sdf.parse("09/10/2023"), 2314.74, new AuthorDTO(ricardo));
+		Deposit deposit2 = new Deposit(null, sdf.parse("09/10/2023"), 2314.74, new AuthorDTO(arielton));
+		
 		depositRepository.saveAll(Arrays.asList(deposit1, deposit2));
 	}
 

@@ -7,6 +7,8 @@ import java.util.Objects;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.rickgurgel.VestBank.dto.AuthorDTO;
+
 @Document
 public class Deposit implements Serializable{
 
@@ -16,19 +18,17 @@ public class Deposit implements Serializable{
 	private String id;
 	private Date date;
 	private Double amount;
-	private Account author;
-	private Account newBalance;
+	private AuthorDTO author;
 	
 	public Deposit() {
 	}
 
-	public Deposit(String id, Date date, Double amount, Account author, Account newBalance) {
+	public Deposit(String id, Date date, Double amount, AuthorDTO author) {
 		super();
 		this.id = id;
 		this.date = date;
 		this.amount = amount;
 		this.author = author;
-		this.newBalance = newBalance;
 	}
 
 	public String getId() {
@@ -55,20 +55,12 @@ public class Deposit implements Serializable{
 		this.amount = amount;
 	}
 	
-	public Account getAuthor() {
+	public AuthorDTO getAuthor() {
 		return author;
 	}
 
-	public void setAuthor(Account author) {
+	public void setAuthor(AuthorDTO author) {
 		this.author = author;
-	}
-	
-	public Account getNewBalance() {
-		return newBalance;
-	}
-
-	public void setNewBalance(Account newBalance) {
-		this.newBalance = newBalance;
 	}
 	
 	@Override
