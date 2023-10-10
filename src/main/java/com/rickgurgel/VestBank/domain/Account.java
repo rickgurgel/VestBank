@@ -1,12 +1,9 @@
 package com.rickgurgel.VestBank.domain;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
@@ -18,9 +15,6 @@ public class Account implements Serializable{
 	private String id;
 	private String username;
 	private Double balance;
-	
-	@DBRef(lazy = true)
-	private List<Deposit> deposits = new ArrayList<>();
 	
 	public Account() {
 		super();
@@ -56,14 +50,6 @@ public class Account implements Serializable{
 	public void setBalance(Double balance) {
 		this.balance = balance;
 	}
-	
-	public List<Deposit> getDeposits() {
-		return deposits;
-	}
-
-	public void setDeposits(List<Deposit> deposits) {
-		this.deposits = deposits;
-	}	
 
 	@Override
 	public int hashCode() {
@@ -86,4 +72,5 @@ public class Account implements Serializable{
 	public String toString() {
 		return "Account [id=" + id + ", username=" + username + ", balance=" + balance + "]";
 	}
+
 }

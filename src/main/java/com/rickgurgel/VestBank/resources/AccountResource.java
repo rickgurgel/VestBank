@@ -2,6 +2,7 @@ package com.rickgurgel.VestBank.resources;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,4 +61,17 @@ public class AccountResource {
 		obj = service.update(obj);
 		return ResponseEntity.noContent().build();
 	}
+	
+	@PutMapping("/{id}/deposit")
+    public Account deposit(@PathVariable String id, @RequestBody Map<String, Double> request) {
+        Double amount = request.get("amount");
+        return service.deposit(id, amount);
+    }
+
+    @PutMapping("/{id}/withdraw")
+    public Account withdraw(@PathVariable String id, @RequestBody Map<String, Double> request) {
+        Double amount = request.get("amount");
+        return service.withdraw(id, amount);
+    }
+	
 }

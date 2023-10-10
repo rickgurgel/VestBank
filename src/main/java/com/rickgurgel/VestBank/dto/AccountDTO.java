@@ -44,6 +44,5 @@ public class AccountDTO implements Serializable{
 	public void setBalance(Double balance) {
 		this.balance = balance;
 	}
-	
-	
+
 }
