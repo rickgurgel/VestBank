@@ -41,6 +41,11 @@ public class Instantiation implements CommandLineRunner{
 		Deposit deposit2 = new Deposit(null, sdf.parse("09/10/2023"), 2314.74, new AuthorDTO(arielton));
 		
 		depositRepository.saveAll(Arrays.asList(deposit1, deposit2));
+		
+		ricardo.getDeposits().addAll(Arrays.asList(deposit1));
+		arielton.getDeposits().addAll(Arrays.asList(deposit2));
+		accountRepository.save(ricardo);
+		accountRepository.save(arielton);
 	}
 
 }
