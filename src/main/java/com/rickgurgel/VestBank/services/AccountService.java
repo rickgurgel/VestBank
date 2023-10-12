@@ -50,18 +50,18 @@ public class AccountService {
 		return new Account(objDto.getId(), objDto.getUsername(), objDto.getBalance());
 	}
 	
-	 public Account deposit(String id, double amount) {
-	        Account account = findById(id);
-	        account.setBalance(account.getBalance() + amount);
-	        return repo.save(account);
-	    }
+	public Account deposit(String id, double amount) {
+	       Account account = findById(id);
+	       account.setBalance(account.getBalance() + amount);
+	       return repo.save(account);
+	}
 
-	    public Account withdraw(String id, double amount) {
-	        Account account = findById(id);
-	        if (account.getBalance() < amount) {
-	            throw new RuntimeException("Insufficient funds");
-	        }
-	        account.setBalance(account.getBalance() - amount);
-	        return repo.save(account);
-	    }
+	public Account withdraw(String id, double amount) {
+	       Account account = findById(id);
+	       if (account.getBalance() < amount) {
+	    	   throw new RuntimeException("Insufficient funds");
+	       }
+	       account.setBalance(account.getBalance() - amount);
+	       return repo.save(account);
+	}
 }
